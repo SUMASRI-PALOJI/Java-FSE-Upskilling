@@ -1,0 +1,29 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  background-color: #e0f7fa; /* Fallback color (light blue) */
+  background-image: url('cityscape.jpg'); /* Replace with actual image path */
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  font-family: 'Segoe UI', sans-serif;
+  color: #222;
+}
+p {
+  color: rgba(0, 0, 0, 0.8); /* Semi-transparent black */
+  font-size: 18px;
+  line-height: 1.6;
+  padding: 20px;
+}
+.section-header {
+  background: linear-gradient(to right, #007BFF, #00BCD4); /* Blue to cyan */
+  color: white;
+  padding: 16px 24px;
+  font-size: 24px;
+  font-weight: bold;
+  text-transform: uppercase;
+  text-align: center;
+}

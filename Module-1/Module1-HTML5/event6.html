@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Find Nearby Events</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      background-color: #f4f4f4;
+    }
+    .box {
+      background-color: white;
+      max-width: 400px;
+      margin: auto;
+      padding: 20px;
+      border-radius: 10px;
+      text-align: center;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: #28a745;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #218838;
+    }
+    #output {
+      margin-top: 20px;
+      font-size: 16px;
+    }
+    .error {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+<div class="box">
+  <h2>Event Locator</h2>
+  <button onclick="findLocation()">Find Nearby Events</button>
+  <div id="output"></div>
+</div>
+<script>
+  function findLocation() {
+    const output = document.getElementById("output");
+    if (!navigator.geolocation) {
+      output.innerHTML = "<p class='error'>Geolocation is not supported by your browser.</p>";
+      return;
+    }
+    output.innerHTML = "Locating you...";
+    const options = {
+      enableHighAccuracy: true,
+      timeout: 10000, 
+      maximumAge: 0
+    };
+    function success(position) {
+      const latitude = position.coords.latitude;
+      const longitude = position.coords.longitude;
+      output.innerHTML = `
+        <p><strong>Your Location:</strong></p>
+        <p>Latitude: ${latitude}</p>
+        <p>Longitude: ${longitude}</p>
+      `;
+    }
+    function error(err) {
+      if (err.code === 1) {
+        output.innerHTML = "<p class='error'>❌ Permission denied. Please allow location access.</p>";
+      } else if (err.code === 2) {
+        output.innerHTML = "<p class='error'>❌ Position unavailable.</p>";
+      } else if (err.code === 3) {
+        output.innerHTML = "<p class='error'>❌ Request timed out. Try again.</p>";
+      } else {
+        output.innerHTML = "<p class='error'>❌ An unknown error occurred.</p>";
+      }
+    }
+    navigator.geolocation.getCurrentPosition(success, error, options);
+  }
+</script>
+</body>
+</html>

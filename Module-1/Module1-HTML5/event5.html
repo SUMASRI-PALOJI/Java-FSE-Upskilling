@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>User Preferences</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f0f2f5;
+      padding: 20px;
+    }
+    .box {
+      background-color: white;
+      padding: 20px;
+      max-width: 400px;
+      margin: auto;
+      border-radius: 10px;
+    }
+    label, select, button {
+      display: block;
+      width: 100%;
+      margin-top: 10px;
+      padding: 8px;
+      border-radius: 5px;
+      box-sizing: border-box;
+    }
+    button {
+      background-color: #007BFF;
+      color: white;
+      border: none;
+    }
+    button:hover {
+      background-color: #0056b3;
+    }
+    #status {
+      margin-top: 10px;
+      font-size: 14px;
+      color: green;
+    }
+  </style>
+</head>
+<body>
+<div class="box">
+  <h2>Select Your Favorite Event</h2>
+  <label for="eventSelect">Choose Event:</label>
+  <select id="eventSelect" onchange="savePreference()">
+    <option value="">-- Select Event --</option>
+    <option value="Workshop">Workshop</option>
+    <option value="Seminar">Seminar</option>
+    <option value="Concert">Concert</option>
+  </select>
+  <button onclick="clearPreferences()">Clear Preferences</button>
+  <div id="status"></div>
+</div>
+<script>
+  window.onload = function () {
+    let savedEvent = localStorage.getItem("preferredEvent");
+    if (savedEvent) {
+      document.getElementById("eventSelect").value = savedEvent;
+      document.getElementById("status").innerText = "✔️ Loaded saved preference: " + savedEvent;
+    }
+  };
+  function savePreference() {
+    let eventType = document.getElementById("eventSelect").value;
+    if (eventType) {
+      localStorage.setItem("preferredEvent", eventType);
+      document.getElementById("status").innerText = "✅ Preference saved: " + eventType;
+    }
+  }
+  function clearPreferences() {
+    localStorage.clear();
+    sessionStorage.clear();
+    document.getElementById("eventSelect").value = "";
+    document.getElementById("status").innerText = "❌ Preferences cleared.";
+  }
+</script>
+</body>
+</html>

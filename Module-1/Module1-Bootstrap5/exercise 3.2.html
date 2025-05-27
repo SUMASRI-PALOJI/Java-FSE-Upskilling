@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Bootstrap Grid Minimal Example</title>
+  <link rel="stylesheet" href="css/bootstrap.min.css" />
+  <style>
+    .box {
+      background-color: #0d6efd; /* Bootstrap primary blue */
+      color: white;
+      padding: 30px 0;
+      text-align: center;
+      margin-bottom: 10px;
+      border-radius: 5px;
+      font-weight: bold;
+      font-size: 1.2rem;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container mt-4">
+    <!-- container adds horizontal padding & centers content -->
+
+    <div class="row">
+      <!-- row removes side padding and groups columns -->
+
+      <div class="col-12 col-md-6 col-lg-4 box">Column 1</div>
+      <div class="col-12 col-md-6 col-lg-4 box">Column 2</div>
+      <div class="col-12 col-md-6 col-lg-4 box">Column 3</div>
+    </div>
+  </div>
+
+  <script src="js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

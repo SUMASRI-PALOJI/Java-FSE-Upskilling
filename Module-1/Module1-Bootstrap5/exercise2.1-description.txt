@@ -1,0 +1,72 @@
+Exercise 2.1 – Exploring Bootstrap Folder Structure
+
+1. css/ Folder
+
+Contains:
+Compiled Bootstrap CSS files.
+
+Purpose:
+
+Applies Bootstrap's prewritten styles to your HTML elements.
+
+Controls layout, typography, forms, buttons, spacing, and more.
+
+Common files inside:
+
+| File                    | Description                                                                            |
+| ----------------------- | -------------------------------------------------------------------------------------- |
+| `bootstrap.min.css`     | ✅ Minified version — used in production.                                               |
+| `bootstrap.css`         | Unminified version — readable, used for debugging or learning.                         |
+| `bootstrap.rtl.min.css` | Right-to-left layout support for RTL languages (Arabic, Hebrew).                       |
+| `bootstrap.min.css.map` | Used for browser debugging tools to map the minified code back to the original source. |
+
+
+
+2. js/ Folder
+
+Contains:
+Bootstrap’s JavaScript functionality.
+
+Purpose:
+
+Enables interactive components like modals, dropdowns, carousels, accordions, etc.
+| File                      | Description                                                                                  | --------------------------------------------------------------------------------------------- |
+| `bootstrap.bundle.min.js` | ✅ Includes both Bootstrap JS **and Popper.js** (needed for tooltips, dropdowns). Recommended. |
+| `bootstrap.min.js`        | Bootstrap JS **without Popper.js**.                                                           |
+| `.map` files              | Source maps for development/debugging (optional).                                             |
+
+3. (Optional) icons/ Folder
+If you downloaded Bootstrap Icons separately, this folder will exist.
+
+Purpose:
+
+Contains SVG icon files and stylesheets for easy inclusion of icons in your project.
+
+| File/folder           | Description                                                     |
+| --------------------- | --------------------------------------------------------------- |
+| `bootstrap-icons.css` | CSS to use the icons as classes (`<i class="bi bi-alarm"></i>`) |
+| `fonts/` or `svg/`    | The actual icon files                                           |
+
+
+
+After downloading the Bootstrap 5.3.6 compiled package, the extracted folder contains:
+
+1. css/
+   - Contains compiled CSS files.
+   - 'bootstrap.min.css' is the minified production-ready CSS file used in websites.
+   - 'bootstrap.css' is the readable version for development.
+   - '.map' files help browsers map minified code to readable source code during debugging.
+
+2. js/
+   - Contains Bootstrap’s JavaScript functionality.
+   - 'bootstrap.bundle.min.js' includes both Bootstrap JS and Popper.js.
+   - 'bootstrap.min.js' is Bootstrap JS without Popper.
+   - '.map' files are used for debugging tools.
+
+3. (Optional) icons/
+   - If Bootstrap Icons are downloaded, this folder contains SVG icon files and styles.
+   - Not part of the default Bootstrap download.
+
+Conclusion:
+These folders help in integrating Bootstrap’s styles and interactivity into any web project.
+

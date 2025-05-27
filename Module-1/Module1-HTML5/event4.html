@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Event Video Invite</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      background-color: #f5f5f5;
+    }
+    .container {
+      max-width: 600px;
+      margin: auto;
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+    }
+    video {
+      width: 100%;
+      border-radius: 10px;
+    }
+    #status {
+      margin-top: 10px;
+      font-weight: bold;
+      color: green;
+    }
+    input, textarea, button {
+      width: 100%;
+      margin-top: 10px;
+      padding: 8px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+    button {
+      background-color: #007BFF;
+      color: white;
+      border: none;
+      margin-top: 15px;
+    }
+    button:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <h2>You're Invited!</h2>
+  <video id="promoVideo" controls oncanplay="showReadyMessage()">
+    <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+  <div id="status"></div>
+  <form id="inviteForm">
+    <label>Your Name:</label>
+    <input type="text" id="name" placeholder="Enter your name">
+    <label>Message:</label>
+    <textarea id="message" placeholder="Leave a message..."></textarea>
+    <button type="submit" onclick="markSubmitted()">Send</button>
+  </form>
+</div>
+<script>
+  function showReadyMessage() {
+    document.getElementById("status").innerText = "🎉 Video ready to play!";
+  }
+  let isFormSubmitted = false;
+  function markSubmitted() {
+    isFormSubmitted = true;
+  }
+  window.onbeforeunload = function () {
+    if (!isFormSubmitted) {
+      return "Are you sure you want to leave? Your message is not submitted yet.";
+    }
+  };
+</script>
+</body>
+</html>

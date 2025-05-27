@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Event Feedback Form</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      background-color: #f2f2f2;
+      padding: 20px;
+    }
+    .box {
+      background-color: white;
+      padding: 20px;
+      max-width: 500px;
+      margin: auto;
+      border-radius: 10px;
+    }
+    label {
+      display: block;
+      margin-top: 15px;
+    }
+    input, select, textarea, button {
+      width: 100%;
+      padding: 8px;
+      margin-top: 5px;
+      margin-bottom: 10px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      box-sizing: border-box;
+    }
+    textarea {
+      height: 80px;
+    }
+    #eventFee, #charCount, #message {
+      font-size: 14px;
+      color: green;
+    }
+    img {
+      display: block;
+      margin: 20px auto;
+      width: 200px;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+  </style>
+</head>
+<body>
+<div class="box">
+  <h2>Event Feedback</h2>
+  <form id="feedbackForm">
+    <label>Phone Number:</label>
+    <input type="text" id="phone" placeholder="Enter 10-digit phone number" onblur="checkPhone()">
+    <label>Select Event:</label>
+    <select id="event" onchange="showEventFee()">
+      <option value="">-- Select --</option>
+      <option value="Workshop">Workshop - $50</option>
+      <option value="Seminar">Seminar - $30</option>
+      <option value="Concert">Concert - $100</option>
+    </select>
+    <div id="eventFee"></div>
+    <label>Your Feedback:</label>
+    <textarea id="feedback" onkeyup="countChars()" placeholder="Write something..."></textarea>
+    <div id="charCount">0 / 200</div>
+    <button type="button" onclick="showMessage()">Submit</button>
+    <div id="message"></div>
+  </form>
+  <img src="https://via.placeholder.com/200" ondblclick="zoomImage(this)" title="Double click to zoom">
+</div>
+<script>
+  function checkPhone() {
+    let phone = document.getElementById('phone').value;
+    if (!/^\d{10}$/.test(phone)) {
+      alert("Phone number must be 10 digits.");
+    }
+  }
+  function showEventFee() {
+    let event = document.getElementById('event').value;
+    let fee = "";
+    if (event === "Workshop") fee = "$50";
+    else if (event === "Seminar") fee = "$30";
+    else if (event === "Concert") fee = "$100";
+    document.getElementById('eventFee').innerText = "Event Fee: " + fee;
+  }
+  function countChars() {
+    let text = document.getElementById('feedback').value;
+    document.getElementById('charCount').innerText = text.length + " / 200";
+  }
+  function showMessage() {
+    document.getElementById('message').innerText = "Thank you for your feedback!";
+  }
+  function zoomImage(img) {
+    if (img.style.transform === "scale(1.5)") {
+      img.style.transform = "scale(1)";
+    } else {
+      img.style.transform = "scale(1.5)";
+    }
+  }
+</script>
+</body>
+</html>
